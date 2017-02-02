@@ -22,7 +22,7 @@ public class PushPlugin extends FirebaseMessagingService {
     private static PushPluginListener onTokenRefreshCallback;
 
     /**
-     * Register the application in GCM
+     * Register the application in FCM
      *
      * @param appContext
      * @param projectId
@@ -62,10 +62,9 @@ public class PushPlugin extends FirebaseMessagingService {
      */
     public static void setOnMessageReceivedCallback(PushPluginListener callbacks) {
         onMessageReceivedCallback = callbacks;
-        RemoteMessage.Notification whatever = null;
 
         if (cachedData != null) {
-            executeOnMessageReceivedCallback(cachedData, whatever);
+            executeOnMessageReceivedCallback(cachedData, null);
             cachedData = null;
         }
     }
@@ -144,7 +143,6 @@ public class PushPlugin extends FirebaseMessagingService {
     public static void setOnTokenRefreshCallback(PushPluginListener callbacks) {
         onTokenRefreshCallback = callbacks;
     }
-
 
     /**
      * Execute the onTokeRefreshCallback.

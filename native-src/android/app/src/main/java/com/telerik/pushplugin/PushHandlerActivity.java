@@ -75,7 +75,7 @@ public class PushHandlerActivity extends Activity {
         PackageManager pm = getPackageManager();
         Intent launchIntent = pm.getLaunchIntentForPackage(getApplicationContext().getPackageName());
         Log.d(TAG, "starting activity for package: " + getApplicationContext().getPackageName());
-        launchIntent.setPackage(null);
+        launchIntent.setPackage(getApplicationContext().getPackageName());
         startActivity(launchIntent);
     }
 
@@ -86,5 +86,4 @@ public class PushHandlerActivity extends Activity {
         final NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
     }
-
 }
